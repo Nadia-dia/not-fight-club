@@ -68,14 +68,16 @@ body.register{
 }
 
 /* MAIN PAGE */
-body.home{
+body.home,
+body.character {
   flex-direction: column;
   align-items: center;
 }
 
-.home .h1{
-  font-weight: 200;
-  font-size: 2rem;
+.home .h1,
+.character .h1{
+  font-weight: 400;
+  font-size: 1.5rem;
 }
 
 .header{
@@ -115,8 +117,9 @@ body.home{
 }
 
 .item__link i{
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #000;
+  transition: color 0.3s;
 }
 
 .item__link i::before{
@@ -125,6 +128,10 @@ body.home{
 
 .item__link.active i {
   color: #3da0da; 
+}
+
+.item__link:hover i {
+  color: #96c8e6; 
 }
 
 .main{
@@ -141,3 +148,101 @@ body.home{
   background-color: #fafafa;
   transition: background-color 0.3s, color 0.3s;
 }
+
+/* CHARACTER PAGE */
+.character .main{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 2rem;
+}
+
+.character__content-container {
+  display: flex;
+  gap: 3rem;
+  width: 100%;
+  height: 100%;
+}
+
+.character__avatar-container{
+  position: relative;
+  width: 30em;
+  height: 35em;;
+  border-radius: 1rem;
+  border: solid 0.1rem black;
+}
+
+.character__avatar{
+  display: block;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.character__overlay{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #eaeff15d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.character__overlay:hover{
+  opacity: 1;
+}
+
+.character__overlay-button{
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  border: 1px solid #2a2c2e;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.character__overlay-button:hover{
+  cursor: pointer;
+  opacity: 1;
+  background-color: #2a2c2e;
+}
+
+.character__overlay-button i{
+  color: #2a2c2e;
+  transition: color 0.3s ease;
+}
+
+.character__overlay-button:hover i{
+  color: #fafafa;
+}
+
+.character__information{
+  display: flex;
+  flex-direction: column;
+}
+
+.character__information-name{
+  font-weight: 400;
+}
+
+.character__information-results{
+  display: flex;
+  gap: 1rem;
+}
+
+.wins{
+  color: green;
+}
+
+.loses{
+  color: red;
+}
+

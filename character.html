@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIGHT CLUB</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/f40ca15358.js" crossorigin="anonymous"></script> 
+</head>
+<body class="character">
+  <header class="header">
+    <h1 class="h1">Character</h1>
+    <nav class="header__navigation">
+      <ul class="header__list">
+        <li class="list__item">
+          <a href="index.html" class="item__link">
+            <i class="fa-regular fa-house"></i>
+          </a>
+        </li>
+        <li class="list__item">
+          <a href="character.html" class="item__link active">
+            <i class="fa-regular fa-user"></i>
+          </a>
+        </li>
+        <li class="list__item">
+          <a href="settings.html" class="item__link">
+            <i class="fa-solid fa-gear"></i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="main">
+    <div class="character__content-container">
+      <div class="character__avatar-container">
+        <img src="assets/images/fighter_1_MinnieMouse.png" alt="character" class="character__avatar">
+        <div class="character__overlay">
+          <button class="character__overlay-button">
+            <i class="fa-solid fa-pen"></i>
+          </button>
+        </div>
+      </div>
+      <div class="character__information">
+        <h3 class="character__information-name">fighter</h3>
+        <div class="character__information-results">
+          <span class="character__result wins">Wins: </span>
+          <span class="character__result loses">Loses: </span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
