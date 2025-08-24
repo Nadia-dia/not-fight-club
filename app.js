@@ -1,0 +1,112 @@
+// REGISTER.HTML
+// Submit button pressed - on register.html
+
+function validateForm(event){
+  event.preventDefault(); 
+  const input= document.querySelector(".input");
+  const username = input.value;
+
+  if(username.trim()===""){
+    alert("Please, fill username field. Value couldn't be empty.");
+    input.value="";
+  } else {
+    // Saving username variable
+    localStorage.setItem("username", username);
+    
+    // Checking wins & loses variables and setting them if don't exist
+    if(localStorage.getItem("winsCounter") === null){
+      localStorage.setItem("winsCounter", "0");
+    }
+
+    if(localStorage.getItem("losesCounter") === null){
+      localStorage.setItem("losesCounter", "0");
+    }
+    
+    window.location.href = "index.html";
+  };
+};
+
+
+const form=document.querySelector(".register-form");
+if(form){form.addEventListener("submit", validateForm);};
+
+// INDEX.HTML
+// Nav buttons pressed - on index.html
+const links = document.querySelectorAll(".item__link")
+links.forEach(link => {
+  if(link){
+    link.addEventListener("click", event => {
+      event.preventDefault(); 
+    
+      //prevent reload if already on that page
+      let current = window.location.pathname.split("/").pop();
+      if (current === "") current = "index.html"; // default
+      const target=link.getAttribute("href");
+
+      if(current !== target){
+        window.location.href=target;         
+      }
+    });
+  }
+});
+
+// Fight button pressed - on index.html
+const fightButton = document.querySelector(".fight-button");
+
+if(fightButton){
+  fightButton.addEventListener("click", event => {
+    event.preventDefault(); 
+    window.location.href = "fight.html";
+  });
+};
+
+// CHARACTER.HTML
+// Setting username in title, wins & loses counter 
+const characterName = document.querySelector(".character__information-name");
+const wins = document.querySelector(".wins");
+const loses = document.querySelector(".loses");
+
+if(characterName && wins && loses){
+  characterName.innerText = localStorage.username;
+  wins.insertAdjacentText("beforeend", localStorage.winsCounter);
+  loses.insertAdjacentText("beforeend", localStorage.losesCounter);
+}
+
+// POPUP
+// Opening & Closing popup
+const openButton = document.querySelector(".edit-button");
+const popup = document.querySelector(".popup");
+const closeButton = document.querySelector(".close-button");
+
+if(popup){
+  openButton.addEventListener("click", ()=>{
+    popup.classList.add("visible");
+  });
+  
+  closeButton.addEventListener("click", ()=>{
+    popup.classList.remove("visible");
+  });
+
+  popup.addEventListener("click", (event)=> {
+    if(event.target === popup){
+      popup.classList.remove("visible");
+    }
+  });
+};
+
+// Choosing another character
+const selectButtons =document.querySelectorAll(".select-button");
+const avatar=document.querySelector(".character__content-container .character__avatar");
+
+if(popup){
+  selectButtons.forEach((selectButton)=>{
+    selectButton.addEventListener("click", (event)=>{
+      // target - the element that was actually clicked
+      // currentTarget - the element the listener was attached to
+      const newAvatar = event.currentTarget.parentElement.previousElementSibling;
+      avatar.src= newAvatar.src;
+      popup.classList.remove("visible");
+    });
+  });
+}
+
