@@ -61,7 +61,7 @@ if(fightButton){
 };
 
 // CHARACTER.HTML
-// Username in title, wins & loses counter 
+// Setting username in title, wins & loses counter 
 const characterName = document.querySelector(".character__information-name");
 const wins = document.querySelector(".wins");
 const loses = document.querySelector(".loses");
@@ -71,3 +71,42 @@ if(characterName && wins && loses){
   wins.insertAdjacentText("beforeend", localStorage.winsCounter);
   loses.insertAdjacentText("beforeend", localStorage.losesCounter);
 }
+
+// POPUP
+// Opening & Closing popup
+const openButton = document.querySelector(".edit-button");
+const popup = document.querySelector(".popup");
+const closeButton = document.querySelector(".close-button");
+
+if(popup){
+  openButton.addEventListener("click", ()=>{
+    popup.classList.add("visible");
+  });
+  
+  closeButton.addEventListener("click", ()=>{
+    popup.classList.remove("visible");
+  });
+
+  popup.addEventListener("click", (event)=> {
+    if(event.target === popup){
+      popup.classList.remove("visible");
+    }
+  });
+};
+
+// Choosing another character
+const selectButtons =document.querySelectorAll(".select-button");
+const avatar=document.querySelector(".character__content-container .character__avatar");
+
+if(popup){
+  selectButtons.forEach((selectButton)=>{
+    selectButton.addEventListener("click", (event)=>{
+      // target - the element that was actually clicked
+      // currentTarget - the element the listener was attached to
+      const newAvatar = event.currentTarget.parentElement.previousElementSibling;
+      avatar.src= newAvatar.src;
+      popup.classList.remove("visible");
+    });
+  });
+}
+
